@@ -58,6 +58,9 @@ struct HomeView: View {
                     Image("settings")
                 }
             }
+            .onAppear {
+                viewModel.send(action: .getUser)
+            }
         }
     }
     
@@ -129,8 +132,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: .init())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(viewModel: .init(container: .init(service: .StubService()), userId: "user_id"))
+//    }
+//}

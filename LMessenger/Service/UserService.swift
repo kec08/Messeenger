@@ -1,0 +1,54 @@
+//
+//  UserService.swift
+//  LMessenger
+//
+//  Created by 김은찬 on 8/3/25.
+//
+
+import Foundation
+import Combine
+
+protocol UserServiceType {
+    func addUser(_ user: User) -> AnyPublisher<User, ServiceError>
+    func getUser(userId: String) -> AnyPublisher<User, ServiceError>
+}
+
+class UserService: UserServiceType {
+    
+    private var dbRepository: UserDBRepositoryType
+    
+    init(dbRepository: UserDBRepositoryType) {
+        self.dbRepository = dbRepository
+    }
+    
+    func addUser(_ user: User) -> AnyPublisher<User, ServiceError> {
+        dbRepository.addUser(user.toObject())
+            .map { user }
+            .mapError { .error($0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func getUser(userId: String) -> AnyPublisher<User, ServiceError> {
+        dbRepository.getUser(userId: userId)
+            .tryMap { userObject in
+                guard let userObject = userObject else {
+                    throw ServiceError.error(NSError(domain: "UserService", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not found"]))
+                }
+                return userObject.toModel()
+            }
+            .mapError { .error($0) }
+            .eraseToAnyPublisher()
+    }
+
+}
+
+class StubUserService: UserServiceType {
+    
+    func addUser(_ user: User) -> AnyPublisher<User, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func getUser(userId: String) -> AnyPublisher<User, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+}

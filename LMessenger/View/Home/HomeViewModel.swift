@@ -11,11 +11,15 @@ import Combine
 class HmoeViewModel: ObservableObject {
     
     enum Action {
-        case getUser
+        case load
+        case presentMyProfileView
+        case presnOtherProfileView(String)
     }
     
     @Published var myUser: User?
     @Published var users: [User] = []
+    @Published var phase: Phase = .notRequested
+    @Published var modalDestination: HomeModalDestination?
     
     private var userId: String
     private var container: DIContainer
@@ -28,13 +32,29 @@ class HmoeViewModel: ObservableObject {
     
     func send(action: Action) {
         switch action {
-        case .getUser:
+        case .load:
+            phase = .loading
+            
             container.service.userService.getUser(userId: userId)
-                .sink { completion in
-                    // TODO:
-                } receiveValue: { [weak self] user in
+                .handleEvents(receiveOutput: { [weak self] user in
                     self?.myUser = user
+                })
+                .flatMap { user in
+                    self.container.service.userService.loadUsers(id: user.id)
                 }
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.phase = .fail
+                    }
+                } receiveValue: { [weak self] users in
+                    self?.phase = .success
+                    self?.users = users
+                }.store(in: &subscriptions)
+        case .presentMyProfileView:
+            modalDestination = .myProfile
+            
+        case let .presnOtherProfileView(userId):
+            modalDestination = .otherProfile(userId)
         }
     }
 }

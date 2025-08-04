@@ -30,6 +30,12 @@
 		BC7966CF2E3DE40D00F1FB81 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7966CE2E3DE40A00F1FB81 /* HomeView.swift */; };
 		BC7966D12E3DE41500F1FB81 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7966D02E3DE41100F1FB81 /* ChatListView.swift */; };
 		BC7966D62E3DE8AE00F1FB81 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7966D52E3DE8A700F1FB81 /* HomeViewModel.swift */; };
+		BC7FEC982E40E9FB00E43050 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC972E40E9E200E43050 /* PlaceholderView.swift */; };
+		BC7FEC9A2E40EA9F00E43050 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC992E40EA9800E43050 /* LoadingView.swift */; };
+		BC7FEC9C2E40EB3C00E43050 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC9B2E40EB3600E43050 /* ErrorView.swift */; };
+		BC7FEC9E2E40F06000E43050 /* HomeModalDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC9D2E40F05200E43050 /* HomeModalDestination.swift */; };
+		BC7FECA12E40F17900E43050 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FECA02E40F17100E43050 /* MyProfileView.swift */; };
+		BC7FECA32E40F19C00E43050 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FECA22E40F19400E43050 /* OtherProfileView.swift */; };
 		BC8992B82E3DFD71009E65CA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BC8992B72E3DFD71009E65CA /* FirebaseDatabase */; };
 		BC8992DC2E3F897C009E65CA /* UserDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8992DB2E3F8970009E65CA /* UserDBRepository.swift */; };
 		BC8992E32E3F8B66009E65CA /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8992E22E3F8B5C009E65CA /* UserObject.swift */; };
@@ -79,6 +85,12 @@
 		BC7966CE2E3DE40A00F1FB81 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BC7966D02E3DE41100F1FB81 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		BC7966D52E3DE8A700F1FB81 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BC7FEC972E40E9E200E43050 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		BC7FEC992E40EA9800E43050 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BC7FEC9B2E40EB3600E43050 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		BC7FEC9D2E40F05200E43050 /* HomeModalDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalDestination.swift; sourceTree = "<group>"; };
+		BC7FECA02E40F17100E43050 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		BC7FECA22E40F19400E43050 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		BC8992DB2E3F8970009E65CA /* UserDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBRepository.swift; sourceTree = "<group>"; };
 		BC8992E22E3F8B5C009E65CA /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		BC8992E42E3F8BDE009E65CA /* DBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBError.swift; sourceTree = "<group>"; };
@@ -236,9 +248,13 @@
 		BC7966C42E3DE3ED00F1FB81 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC7FEC9B2E40EB3600E43050 /* ErrorView.swift */,
+				BC7FEC992E40EA9800E43050 /* LoadingView.swift */,
+				BC7FEC972E40E9E200E43050 /* PlaceholderView.swift */,
 				BC7966BC2E3DE3ED00F1FB81 /* Authtencation */,
 				BC7966C02E3DE3ED00F1FB81 /* Login */,
 				BC7966C32E3DE3ED00F1FB81 /* MainTab */,
+				BC7FEC9F2E40F16100E43050 /* Profile */,
 				BC7966CC2E3DE3F100F1FB81 /* Home */,
 				BC7966CD2E3DE3F900F1FB81 /* ChatList */,
 			);
@@ -248,6 +264,7 @@
 		BC7966CC2E3DE3F100F1FB81 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BC7FEC9D2E40F05200E43050 /* HomeModalDestination.swift */,
 				BC7966CE2E3DE40A00F1FB81 /* HomeView.swift */,
 				BC7966D52E3DE8A700F1FB81 /* HomeViewModel.swift */,
 			);
@@ -260,6 +277,15 @@
 				BC7966D02E3DE41100F1FB81 /* ChatListView.swift */,
 			);
 			path = ChatList;
+			sourceTree = "<group>";
+		};
+		BC7FEC9F2E40F16100E43050 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BC7FECA22E40F19400E43050 /* OtherProfileView.swift */,
+				BC7FECA02E40F17100E43050 /* MyProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		BC8992B62E3DFD71009E65CA /* Frameworks */ = {
@@ -433,8 +459,12 @@
 				BC8992E52E3F8BE4009E65CA /* DBError.swift in Sources */,
 				BC7966C52E3DE3ED00F1FB81 /* AuthenticatedView.swift in Sources */,
 				BC8992E32E3F8B66009E65CA /* UserObject.swift in Sources */,
+				BC7FEC9C2E40EB3C00E43050 /* ErrorView.swift in Sources */,
+				BC7FEC9A2E40EA9F00E43050 /* LoadingView.swift in Sources */,
 				BC7966C62E3DE3ED00F1FB81 /* AuthenticatedViewModel.swift in Sources */,
+				BC7FEC9E2E40F06000E43050 /* HomeModalDestination.swift in Sources */,
 				BC7966C72E3DE3ED00F1FB81 /* LoginButtonStyle.swift in Sources */,
+				BC7FEC982E40E9FB00E43050 /* PlaceholderView.swift in Sources */,
 				BC7966D62E3DE8AE00F1FB81 /* HomeViewModel.swift in Sources */,
 				BC8992DC2E3F897C009E65CA /* UserDBRepository.swift in Sources */,
 				BC7966C82E3DE3ED00F1FB81 /* LoginIntroView.swift in Sources */,
@@ -446,6 +476,8 @@
 				72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */,
 				BC0C652A2E0160ED0052D0C1 /* AppDelegate.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
+				BC7FECA12E40F17900E43050 /* MyProfileView.swift in Sources */,
+				BC7FECA32E40F19C00E43050 /* OtherProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

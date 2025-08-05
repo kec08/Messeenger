@@ -10,6 +10,7 @@ import Combine
 
 protocol UserServiceType {
     func addUser(_ user: User) -> AnyPublisher<User, ServiceError>
+    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError>
     func getUser(userId: String) -> AnyPublisher<User, ServiceError>
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError>
 }
@@ -25,6 +26,12 @@ class UserService: UserServiceType {
     func addUser(_ user: User) -> AnyPublisher<User, ServiceError> {
         dbRepository.addUser(user.toObject())
             .map { user }
+            .mapError { .error($0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError> {
+        dbRepository.addUserAfterContact(users: users.map { $0.toObject()} )
             .mapError { .error($0) }
             .eraseToAnyPublisher()
     }
@@ -56,6 +63,10 @@ class UserService: UserServiceType {
 class StubUserService: UserServiceType {
     
     func addUser(_ user: User) -> AnyPublisher<User, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

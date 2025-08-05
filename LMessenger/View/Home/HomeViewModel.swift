@@ -12,6 +12,7 @@ class HmoeViewModel: ObservableObject {
     
     enum Action {
         case load
+        case requestContacts
         case presentMyProfileView
         case presnOtherProfileView(String)
     }
@@ -50,6 +51,24 @@ class HmoeViewModel: ObservableObject {
                     self?.phase = .success
                     self?.users = users
                 }.store(in: &subscriptions)
+            
+        case .requestContacts:
+            container.service.contactService.fetchContacts()
+                .flatMap { users in
+                    self.container.service.userService.addUserAfterContact(users: users)
+                }
+                .flatMap { _ in
+                    self.container.service.userService.loadUsers(id: self.userId)
+                }
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.phase = .fail
+                    }
+                } receiveValue: { [weak self] users in
+                    self?.phase = .success
+                    self?.users = users
+                }.store(in: &subscriptions)
+                
         case .presentMyProfileView:
             modalDestination = .myProfile
             

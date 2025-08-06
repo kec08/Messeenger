@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct MyProfileView: View {
     @Environment(\.dismiss) var dismiss
@@ -52,13 +53,17 @@ struct MyProfileView: View {
     }
     
     var profileView: some View {
-        Button {
-            // TODO:
-        } label: {
-            Image("person")
-                .resizable()
-                .frame(width: 80, height: 80)
-                .clipShape(Circle())
+        PhotosPicker(selection: $viewModel.imageSelection,
+                     matching: .images) {
+            AsyncImage(url: URL(string: viewModel.userInfo?.profileURL ?? "")) { image in
+                image.resizable()
+            } placeholder: {
+                Image("person")
+                    .resizable()
+            }
+            .frame(width: 80, height: 80)
+            .clipShape(Circle())
+            
         }
     }
     

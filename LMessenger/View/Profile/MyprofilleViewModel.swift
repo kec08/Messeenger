@@ -6,12 +6,21 @@
 //
 
 import Foundation
+import PhotosUI
+import SwiftUI
 
 @MainActor
 class MyprofilleViewModel: ObservableObject {
     
     @Published var userInfo: User?
     @Published var isPresentedDescEditView: Bool = false
+    @Published var imageSelection: PhotosPickerItem? {
+        didSet {
+            Task {
+                await updateUserProfileImage(pickerItem: imageSelection)
+            }
+        }
+    }
     
     private var userId: String
     
@@ -33,8 +42,23 @@ class MyprofilleViewModel: ObservableObject {
             try? await container.service.userService.updateDeescription(userId: userId, description: description)
             userInfo?.description = description
         } catch {
-            
+            print(error.localizedDescription)
         }
         
+    }
+    
+    func updateUserProfileImage(pickerItem: PhotosPickerItem?) async {
+        
+        guard let pickerItem else { return }
+        
+        do {
+            let data = try await container.service.photoService.loadTransferable(from: pickerItem)
+            let url = try await container.service.uploadService.uploadImage(source: .profile(userId: userId), data: data)
+            try await container.service.userService.updateProfileURL(userId: userId, urlString: url.absoluteString)
+            
+            userInfo?.profileURL = url.absoluteString
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

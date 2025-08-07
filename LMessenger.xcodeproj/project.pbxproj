@@ -55,6 +55,9 @@
 		BCA070952E43B0B30089A2F5 /* UploadSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA070942E43B0A80089A2F5 /* UploadSourceType.swift */; };
 		BCA070982E43B84A0089A2F5 /* PhotoPickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA070972E43B83B0089A2F5 /* PhotoPickerService.swift */; };
 		BCA0709B2E43B9EA0089A2F5 /* PhotoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA0709A2E43B9E30089A2F5 /* PhotoImage.swift */; };
+		BCA070C72E4476D40089A2F5 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA070C62E4476BB0089A2F5 /* ImageCacheService.swift */; };
+		BCA070CC2E4478A60089A2F5 /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA070CB2E44789F0089A2F5 /* MemoryStorage.swift */; };
+		BCA070CE2E4485630089A2F5 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA070CD2E4485530089A2F5 /* DiskStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		BCA070942E43B0A80089A2F5 /* UploadSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSourceType.swift; sourceTree = "<group>"; };
 		BCA070972E43B83B0089A2F5 /* PhotoPickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerService.swift; sourceTree = "<group>"; };
 		BCA0709A2E43B9E30089A2F5 /* PhotoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImage.swift; sourceTree = "<group>"; };
+		BCA070C62E4476BB0089A2F5 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		BCA070CB2E44789F0089A2F5 /* MemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
+		BCA070CD2E4485530089A2F5 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		BCD46F272E3D043700EA85FE /* LMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessenger.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,8 +203,8 @@
 				723ABDB02AFFF1D800C260F1 /* Resource */,
 				723ABD8C2AFFF1B900C260F1 /* Preview Content */,
 				BC0C652B2E0162510052D0C1 /* GoogleService-Info.plist */,
-				BC219AC62E01A8E2001F282C /* Model */,
 				BC20277C2DF60D8500B1CC27 /* General */,
+				BC219AC62E01A8E2001F282C /* Model */,
 			);
 			path = LMessenger;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 		BCA070892E43B04E0089A2F5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BCA070C82E4478850089A2F5 /* ImageCache */,
 				BCA070992E43B9CE0089A2F5 /* PhotoPicker */,
 				BCA0708F2E43B06D0089A2F5 /* Upload */,
 				BCA070842E43B04E0089A2F5 /* AuthenticationService.swift */,
@@ -392,6 +399,16 @@
 				BCA070972E43B83B0089A2F5 /* PhotoPickerService.swift */,
 			);
 			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		BCA070C82E4478850089A2F5 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				BCA070CD2E4485530089A2F5 /* DiskStorage.swift */,
+				BCA070CB2E44789F0089A2F5 /* MemoryStorage.swift */,
+				BCA070C62E4476BB0089A2F5 /* ImageCacheService.swift */,
+			);
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,9 +567,11 @@
 				BC7FEC9E2E40F06000E43050 /* HomeModalDestination.swift in Sources */,
 				BCA070982E43B84A0089A2F5 /* PhotoPickerService.swift in Sources */,
 				BC71B3CA2E4313D0004A3C61 /* MyprofilleViewModel.swift in Sources */,
+				BCA070C72E4476D40089A2F5 /* ImageCacheService.swift in Sources */,
 				BC7966C72E3DE3ED00F1FB81 /* LoginButtonStyle.swift in Sources */,
 				BCA0707F2E43AB6F0089A2F5 /* UploadProvider.swift in Sources */,
 				BC7FEC982E40E9FB00E43050 /* PlaceholderView.swift in Sources */,
+				BCA070CE2E4485630089A2F5 /* DiskStorage.swift in Sources */,
 				BC7966D62E3DE8AE00F1FB81 /* HomeViewModel.swift in Sources */,
 				BC8992DC2E3F897C009E65CA /* UserDBRepository.swift in Sources */,
 				BC7966C82E3DE3ED00F1FB81 /* LoginIntroView.swift in Sources */,
@@ -565,6 +584,7 @@
 				72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */,
 				BC0C652A2E0160ED0052D0C1 /* AppDelegate.swift in Sources */,
 				723ABD872AFFF1B800C260F1 /* LMessengerApp.swift in Sources */,
+				BCA070CC2E4478A60089A2F5 /* MemoryStorage.swift in Sources */,
 				BCA070952E43B0B30089A2F5 /* UploadSourceType.swift in Sources */,
 				BC7FECA12E40F17900E43050 /* MyProfileView.swift in Sources */,
 				BCA0709B2E43B9EA0089A2F5 /* PhotoImage.swift in Sources */,

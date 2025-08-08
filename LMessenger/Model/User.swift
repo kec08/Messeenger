@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
     var id: String
     var name: String
     var phoneNumber: String?
@@ -21,7 +21,7 @@ extension User {
               name: name,
               phoneNumber: phoneNumber,
               profileURL: profileURL,
-              description: description
+              description: description,
         )
     }
 }

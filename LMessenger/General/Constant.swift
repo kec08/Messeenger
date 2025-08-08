@@ -14,7 +14,7 @@ enum Constant { }
 extension Constant {
     struct DBKey {
         static let Users = "Users"
-        static let ChatsRooms = "ChatRooms"
+        static let ChatRooms = "ChatRooms"
         static let Chats = "Chats"
     }
 }

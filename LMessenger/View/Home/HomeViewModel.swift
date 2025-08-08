@@ -15,6 +15,7 @@ class HmoeViewModel: ObservableObject {
         case requestContacts
         case presentMyProfileView
         case presnOtherProfileView(String)
+        case goToChat(User)
     }
     
     @Published var myUser: User?
@@ -25,10 +26,12 @@ class HmoeViewModel: ObservableObject {
     var userId: String
     
     private var container: DIContainer
+    private var navigationRouter: NavigationRouter
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, userId: String) {
+    init(container: DIContainer, navigationRouter: NavigationRouter, userId: String) {
         self.container = container
+        self.navigationRouter = navigationRouter
         self.userId = userId
     }
     
@@ -75,6 +78,16 @@ class HmoeViewModel: ObservableObject {
             
         case let .presnOtherProfileView(userId):
             modalDestination = .otherProfile(userId)
+            
+        case let .goToChat(otherUser):
+            //
+            
+            container.service.chatRoomService.createChatRoomIfNeeded(myUSerId: userId, otherUserId: otherUser.id, otherUserName: otherUser.name)
+                .sink { completion in
+                    
+                } receiveValue: { [weak self] chatRoom in
+                    self?.navigationRouter.push(to: .chat)
+                }.store(in: &subscriptions)
         }
     }
 }

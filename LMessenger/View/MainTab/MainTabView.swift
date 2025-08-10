@@ -21,7 +21,7 @@ struct MainTabView: View {
                     case .home:
                         HomeView(viewModel: .init(container: container, navigationRouter: navigationRouter, userId: authViewModel.userId ?? ""))
                     case .chat:
-                        ChatListView()
+                        ChatListView(viewModel: .init(container: DIContainer(service: StubService()), userId: authViewModel.userId ?? ""))
                     case .phone:
                         Color.blackFix
                     }

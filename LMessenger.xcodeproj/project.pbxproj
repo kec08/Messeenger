@@ -63,6 +63,7 @@
 		BCA071112E45D4870089A2F5 /* ChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071102E45D47D0089A2F5 /* ChatRoomService.swift */; };
 		BCA071392E45E75D0089A2F5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071382E45E7580089A2F5 /* ChatView.swift */; };
 		BCA0713B2E45E7690089A2F5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA0713A2E45E7610089A2F5 /* SearchView.swift */; };
+		BCA071762E48C7E10089A2F5 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071752E48C7D60089A2F5 /* ChatListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		BCA071102E45D47D0089A2F5 /* ChatRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomService.swift; sourceTree = "<group>"; };
 		BCA071382E45E7580089A2F5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		BCA0713A2E45E7610089A2F5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		BCA071752E48C7D60089A2F5 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		BCD46F272E3D043700EA85FE /* LMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessenger.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -321,6 +323,7 @@
 		BC7966CD2E3DE3F900F1FB81 /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
+				BCA071752E48C7D60089A2F5 /* ChatListViewModel.swift */,
 				BC7966D02E3DE41100F1FB81 /* ChatListView.swift */,
 			);
 			path = ChatList;
@@ -651,6 +654,7 @@
 				BCA071112E45D4870089A2F5 /* ChatRoomService.swift in Sources */,
 				BC9EF0952E43195F00725CD1 /* MyProfileMenuType.swift in Sources */,
 				BC7FECA32E40F19C00E43050 /* OtherProfileView.swift in Sources */,
+				BCA071762E48C7E10089A2F5 /* ChatListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,13 +26,7 @@ struct HomeView: View {
                     }
                 }
                 .navigationDestination(for: NavigationDestination.self) {
-                    switch $0 {
-                    case .chat:
-                        ChatView()
-                    case .search:
-                        SearchView()
-                    }
-                    
+                    NavigationRoutingView(destination: $0)
                 }
         }
     }
@@ -69,8 +63,10 @@ struct HomeView: View {
             profileView
                 .padding(.bottom, 30)
             
-            serchButton
-                .padding(.bottom, 30)
+            NavigationLink(value: NavigationDestination.search) {
+                SearchButton()
+            }
+            .padding(.bottom, 24)
             
             HStack{
                 Text("친구")
@@ -131,26 +127,6 @@ struct HomeView: View {
         .padding(.horizontal, 30)
         .onTapGesture {
             viewModel.send(action: .presentMyProfileView)
-        }
-    }
-    
-    var serchButton: some View {
-        NavigationLink(value: NavigationDestination.search) {
-            ZStack{
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(height: 36)
-                    .background(Color.greyCool)
-                    .cornerRadius(5)
-                HStack{
-                    Text("검색")
-                        .font(.system(size: 12))
-                        .foregroundColor(.greyLightVer2)
-                    Spacer()
-                }
-                .padding(.leading, 22)
-            }
-            .padding(.horizontal, 30)
         }
     }
     

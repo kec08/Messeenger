@@ -12,3 +12,5 @@ struct ChatData: Hashable, Identifiable {
     var chats: [Chat]
     var id: String { dateStr }
 }
+
+

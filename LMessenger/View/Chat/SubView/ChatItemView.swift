@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ChatItemView: View {
     let message: String
-    let direcion: ChatItemDirection
-    
+    let direction: ChatItemDirection
     let date: Date
     
     var body: some View {
-        HStack(alignment: .bottom){
-            if direcion == .right {
+        HStack(alignment: .bottom) {
+            if direction == .right {
                 Spacer()
                 dateView
             }
@@ -25,13 +24,13 @@ struct ChatItemView: View {
                 .foregroundColor(.blackFix)
                 .padding(.vertical, 9)
                 .padding(.horizontal, 20)
-                .background(direcion.backgroundColor)
+                .background(direction.backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 50))
-                .overlay(alignment: direcion.overlayAlignment) {
-                    direcion.overlayImage
+                .overlay(alignment: direction.overlayAlignment) {
+                    direction.overlayImage
                 }
             
-            if direcion == .left {
+            if direction == .left {
                 dateView
                 Spacer()
             }
@@ -49,6 +48,6 @@ struct ChatItemView: View {
 
 struct ChatItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatItemView(message: "안녕하세요.", direcion: .right, date: Date())
+        ChatItemView(message: "안녕하세요.", direction: .left, date: Date())
     }
 }

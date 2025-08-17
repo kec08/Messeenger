@@ -21,6 +21,8 @@ class AuthenticatedViewModel: ObservableObject {
         case googleLogin
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
+        case requestPushNotification
+        case setPushToken
         case logout
     }
     
@@ -92,6 +94,25 @@ class AuthenticatedViewModel: ObservableObject {
                 isLoading = false
                 print(error.localizedDescription)
             }
+            
+        case .requestPushNotification:
+            container.service.pushNotificationService.requestAuthorization { [weak self] granted in
+                guard granted else { return }
+                self?.send(action: .setPushToken)
+            }
+        
+        case .setPushToken:
+            container.service.pushNotificationService.fcmToken
+                .compactMap { $0 }
+                .flatMap { [weak self] fcmToken -> AnyPublisher<Void, Never> in
+                    guard let `self` = self, let userId = self.userId else { return Empty().eraseToAnyPublisher() }
+                    return self.container.service.userService.updateFCMToken(userId: userId, fcmToken: fcmToken)
+                        .replaceError(with: ())
+                        .eraseToAnyPublisher()
+                }
+                .sink { _ in
+                }.store(in: &subscriptions)
+            
             
         case .logout:
             container.service.authService.logout()

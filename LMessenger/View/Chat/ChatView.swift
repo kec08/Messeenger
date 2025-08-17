@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 public struct ChatView: View {
     @EnvironmentObject var navigationRoutter: NavigationRouter
@@ -13,11 +14,16 @@ public struct ChatView: View {
     @FocusState private var isFocused: Bool
     
     public var body: some View {
-        ScrollView {
-            if viewModel.chatDataList.isEmpty {
-                Color.chatBg
-            } else {
-                contentView
+        ScrollViewReader { proxy in
+            ScrollView {
+                if viewModel.chatDataList.isEmpty {
+                    Color.chatBg
+                } else {
+//                    contentView
+                }
+            }
+            onChange(of: viewModel.chatDataList.last?.chats) { newValue in
+                proxy.scrollTo(newValue?.last?.id, anchor: .bottom)
             }
         }
         .background(Color.chatBg)
@@ -49,8 +55,8 @@ public struct ChatView: View {
                 } label: {
                     Image("other_add")
                 }
-                Button {
-                } label: {
+                PhotosPicker(selection: $viewModel.imageSelection,
+                             matching: .images) {
                     Image("image_add")
                 }
                 Button {
@@ -82,13 +88,21 @@ public struct ChatView: View {
         }
     }
 
-    var contentView: some View {
+    private var contentView: some View {
         ForEach(viewModel.chatDataList) { chatData in
             Section {
                 ForEach(chatData.chats) { chat in
-                    ChatItemView(message: chat.message ?? "",
-                                 direcion: viewModel.getDirection(id: chat.userId),
-                                 date: chat.date)
+                    if let message = chat.message {
+                        ChatItemView(message: message,
+                                     direction: viewModel.getDirection(id: chat.userId),
+                                     date: chat.date)
+                        .id(chat.chatId)
+                    } else if let photoURL = chat.photoURL {
+                        ChatImageItemView(urlString: photoURL,
+                                     direction: viewModel.getDirection(id: chat.userId),
+                                    date: chat.date)
+                        .id(chat.chatId)
+                    }
                 }
             } header: {
                 headerView(dateStr: chatData.dateStr)
@@ -121,3 +135,4 @@ struct ChatView_Previews: PreviewProvider {
         }
     }
 }
+

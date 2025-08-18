@@ -105,7 +105,11 @@ class ChatViewModel: ObservableObject {
                     self.container.service.uploadService.uploadImage(source: .chat(chatRoomId: self.chatRoomId), data: data)
                 }
                 .flatMap { url in
-                    let chat: Chat = .init(chatId: UUID().uuidString, userId: self.myUserId, message: url.absoluteString, date: Date())
+                    let chat: Chat = .init(chatId: UUID().uuidString,
+                                           userId: self.myUserId,
+                                           message: nil,
+                                           photoURL: url.absoluteString,
+                                           date: Date())
                     return self.container.service.chatService.addChat(chat, to: self.chatRoomId)
                 }
                 .flatMap { chat in

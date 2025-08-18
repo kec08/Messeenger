@@ -19,10 +19,10 @@ public struct ChatView: View {
                 if viewModel.chatDataList.isEmpty {
                     Color.chatBg
                 } else {
-//                    contentView
+                    contentView
                 }
             }
-            onChange(of: viewModel.chatDataList.last?.chats) { newValue in
+            .onChange(of: viewModel.chatDataList.last?.chats) { newValue in
                 proxy.scrollTo(newValue?.last?.id, anchor: .bottom)
             }
         }
@@ -91,16 +91,20 @@ public struct ChatView: View {
     private var contentView: some View {
         ForEach(viewModel.chatDataList) { chatData in
             Section {
-                ForEach(chatData.chats) { chat in
+                // zip을 이용해 index와 chat 요소를 함께 가져옴
+                ForEach(Array(zip(chatData.chats.indices, chatData.chats)), id: \.0) { index, chat in
                     if let message = chat.message {
-                        ChatItemView(message: message,
-                                     direction: viewModel.getDirection(id: chat.userId),
-                                     date: chat.date)
+                        ChatItemView(
+                            message: message,
+                            direction: viewModel.getDirection(id: chat.userId),
+                            date: chat.date
+                        )
                         .id(chat.chatId)
                     } else if let photoURL = chat.photoURL {
-                        ChatImageItemView(urlString: photoURL,
-                                     direction: viewModel.getDirection(id: chat.userId),
-                                    date: chat.date)
+                        ChatImageItemView(
+                            urlString: photoURL,
+                            direction: viewModel.getDirection(id: chat.userId),
+                        )
                         .id(chat.chatId)
                     }
                 }
@@ -109,8 +113,8 @@ public struct ChatView: View {
             }
         }
     }
-    
-    func headerView(dateStr: String) -> some View {
+
+    private func headerView(dateStr: String) -> some View {
         ZStack {
             Rectangle()
                 .foregroundColor(.clear)

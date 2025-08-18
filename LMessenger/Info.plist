@@ -3,15 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.265984224815-78itsg8rgnf0aftkcb0qh1euukn5h8g6</string>
-			</array>
-		</dict>
-	</array>
+<array>
+    <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>com.googleusercontent.apps.265984224815-ngs75dg3gdd2vbr6mimsq0p59mtct5rp</string>
+        </array>
+    </dict>
+</array>
+
 </dict>
 </plist>

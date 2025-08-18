@@ -17,7 +17,6 @@
 		72E4BEFC2B00B871007A1060 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E4BEFB2B00B871007A1060 /* Color+Extension.swift */; };
 		BC0C65282E0160AF0052D0C1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BC0C65272E0160AF0052D0C1 /* FirebaseAuth */; };
 		BC0C652A2E0160ED0052D0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C65292E0160EA0052D0C1 /* AppDelegate.swift */; };
-		BC0C652C2E0162510052D0C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0C652B2E0162510052D0C1 /* GoogleService-Info.plist */; };
 		BC20277B2DF60B6200B1CC27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC20277A2DF60B6200B1CC27 /* LaunchScreen.storyboard */; };
 		BC219AC32E019DF3001F282C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = BC219AC22E019DF3001F282C /* GoogleSignIn */; };
 		BC71B3CA2E4313D0004A3C61 /* MyprofilleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC71B3C92E4313C7004A3C61 /* MyprofilleViewModel.swift */; };
@@ -77,6 +76,7 @@
 		BCE1809A2E505F1200C34A38 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE180992E505F1200C34A38 /* PushNotificationService.swift */; };
 		BCE1809E2E507C3600C34A38 /* PushNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1809D2E507C3600C34A38 /* PushNotificationProvider.swift */; };
 		BCE180A02E507D5500C34A38 /* PushObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1809F2E507D5500C34A38 /* PushObject.swift */; };
+		BCE1AF952E534627004114C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE1AF942E534627004114C3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +109,6 @@
 		723ABDB12AFFF1F000C260F1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		72E4BEFB2B00B871007A1060 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		BC0C65292E0160EA0052D0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC0C652B2E0162510052D0C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC0C652D2E0162B60052D0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC20277A2DF60B6200B1CC27 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC71B3C92E4313C7004A3C61 /* MyprofilleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyprofilleViewModel.swift; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		BCE180992E505F1200C34A38 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		BCE1809D2E507C3600C34A38 /* PushNotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationProvider.swift; sourceTree = "<group>"; };
 		BCE1809F2E507D5500C34A38 /* PushObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushObject.swift; sourceTree = "<group>"; };
+		BCE1AF942E534627004114C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -247,7 +247,7 @@
 				723ABDB02AFFF1D800C260F1 /* Resource */,
 				723ABD8C2AFFF1B900C260F1 /* Preview Content */,
 				BC0C652D2E0162B60052D0C1 /* Info.plist */,
-				BC0C652B2E0162510052D0C1 /* GoogleService-Info.plist */,
+				BCE1AF942E534627004114C3 /* GoogleService-Info.plist */,
 			);
 			path = LMessenger;
 			sourceTree = "<group>";
@@ -623,8 +623,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				723ABDB22AFFF1F000C260F1 /* Colors.xcassets in Resources */,
+				BCE1AF952E534627004114C3 /* GoogleService-Info.plist in Resources */,
 				BC20277B2DF60B6200B1CC27 /* LaunchScreen.storyboard in Resources */,
-				BC0C652C2E0162510052D0C1 /* GoogleService-Info.plist in Resources */,
 				723ABD8E2AFFF1B900C260F1 /* Preview Assets.xcassets in Resources */,
 				723ABD8B2AFFF1B900C260F1 /* Assets.xcassets in Resources */,
 			);

@@ -72,6 +72,8 @@
 		BCA071C92E4C687D0089A2F5 /* ChatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071C82E4C68760089A2F5 /* ChatObject.swift */; };
 		BCA071CB2E4C6BDB0089A2F5 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071CA2E4C6BD00089A2F5 /* ChatService.swift */; };
 		BCA071CE2E4CE6560089A2F5 /* ChatImageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071CD2E4CE6440089A2F5 /* ChatImageItemView.swift */; };
+		BCBE85AB2E540990008CFC35 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE85AA2E54097F008CFC35 /* SearchViewModel.swift */; };
+		BCBE85AD2E5469D7008CFC35 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE85AC2E5469C9008CFC35 /* SearchBar.swift */; };
 		BCE180982E505AF200C34A38 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BCE180972E505AF200C34A38 /* FirebaseMessaging */; };
 		BCE1809A2E505F1200C34A38 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE180992E505F1200C34A38 /* PushNotificationService.swift */; };
 		BCE1809E2E507C3600C34A38 /* PushNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1809D2E507C3600C34A38 /* PushNotificationProvider.swift */; };
@@ -161,6 +163,8 @@
 		BCA071C82E4C68760089A2F5 /* ChatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatObject.swift; sourceTree = "<group>"; };
 		BCA071CA2E4C6BD00089A2F5 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		BCA071CD2E4CE6440089A2F5 /* ChatImageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageItemView.swift; sourceTree = "<group>"; };
+		BCBE85AA2E54097F008CFC35 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		BCBE85AC2E5469C9008CFC35 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		BCD46F272E3D043700EA85FE /* LMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessenger.entitlements; sourceTree = "<group>"; };
 		BCE180962E50597900C34A38 /* LMessengerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessengerRelease.entitlements; sourceTree = "<group>"; };
 		BCE180992E505F1200C34A38 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
@@ -493,6 +497,8 @@
 		BCA0712B2E45E6C90089A2F5 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE85AC2E5469C9008CFC35 /* SearchBar.swift */,
+				BCBE85AA2E54097F008CFC35 /* SearchViewModel.swift */,
 				BCA0713A2E45E7610089A2F5 /* SearchView.swift */,
 			);
 			path = Search;
@@ -655,6 +661,7 @@
 				BCA0713B2E45E7690089A2F5 /* SearchView.swift in Sources */,
 				BC7966C52E3DE3ED00F1FB81 /* AuthenticatedView.swift in Sources */,
 				BC8992E32E3F8B66009E65CA /* UserObject.swift in Sources */,
+				BCBE85AB2E540990008CFC35 /* SearchViewModel.swift in Sources */,
 				BCA071392E45E75D0089A2F5 /* ChatView.swift in Sources */,
 				BCA071802E49B9180089A2F5 /* ChatViewModle.swift in Sources */,
 				BCA0708A2E43B04E0089A2F5 /* AuthenticationService.swift in Sources */,
@@ -682,6 +689,7 @@
 				BC7966C82E3DE3ED00F1FB81 /* LoginIntroView.swift in Sources */,
 				BC7966C92E3DE3ED00F1FB81 /* LoginView.swift in Sources */,
 				BCA070932E43B0A40089A2F5 /* UploadService.swift in Sources */,
+				BCBE85AD2E5469D7008CFC35 /* SearchBar.swift in Sources */,
 				BC7966CA2E3DE3ED00F1FB81 /* MainTabType.swift in Sources */,
 				BCE1809E2E507C3600C34A38 /* PushNotificationProvider.swift in Sources */,
 				BC7966CB2E3DE3ED00F1FB81 /* MainTabView.swift in Sources */,

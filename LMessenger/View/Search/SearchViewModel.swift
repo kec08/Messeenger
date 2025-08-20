@@ -15,6 +15,7 @@ class SearchViewModel: ObservableObject {
         case requestQuery(String)
         case clearSearchResult
         case clearSearchText
+        case pop
     }
     
     @Published var shouldBecomeFirstResponder: Bool = false
@@ -65,6 +66,8 @@ class SearchViewModel: ObservableObject {
             shouldBecomeFirstResponder = false
             searchResults = []
             
+        case .pop:
+            container.navigationRouter.pop()
         }
     }
     

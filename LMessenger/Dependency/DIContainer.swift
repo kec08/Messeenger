@@ -9,8 +9,10 @@ import Foundation
 
 class DIContainer: ObservableObject {
     var service: ServiceType
+    let navigationRouter: NavigationRouter
     
     init(service: ServiceType) {
         self.service = service
+        self.navigationRouter = NavigationRouter()
     }
 }

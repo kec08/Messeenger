@@ -13,7 +13,7 @@ struct HomeView: View {
     @StateObject var viewModel: HmoeViewModel
     
     var body: some View {
-        NavigationStack(path: $navigationRouter.desctinations){
+        NavigationStack(path: $navigationRouter.destinations){
             contentView
                 .fullScreenCover(item: $viewModel.modalDestination) {
                     switch $0 {

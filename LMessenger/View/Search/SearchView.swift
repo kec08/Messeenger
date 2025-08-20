@@ -7,30 +7,39 @@
 
 import SwiftUI
 
-public struct SearchView: View {
+struct SearchView: View {
+    @Environment(\.managedObjectContext) var objectContext
     @EnvironmentObject var navigationRouter: NavigationRouter
     @StateObject var viewModel: SearchViewModel
+    @AccessibilityFocusState var isSearchBarFocused: Bool
     
-    public var body: some View {
+    var body: some View {
         VStack {
             topView
             
-            List {
-                ForEach(viewModel.searchResults) { result in
-                    HStack(spacing: 8) {
-                        URLImageView(urlString: result.profileURL)
-                            .frame(width: 26, height: 26)
-                            .clipShape(Circle())
-                        Text(result.name)
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(.bkText)
-                    }
-                    .listRowInsets(.init())
-                    .listRowSeparator(.hidden)
-                    .padding(.horizontal, 30)
+            if viewModel.searchResults.isEmpty {
+                RecentSearchView { text in
+                    viewModel.send(action: .setSearchText(text))
+                    isSearchBarFocused = true
                 }
+            } else {
+                List {
+                    ForEach(viewModel.searchResults) { result in
+                        HStack(spacing: 8) {
+                            URLImageView(urlString: result.profileURL)
+                                .frame(width: 26, height: 26)
+                                .clipShape(Circle())
+                            Text(result.name)
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.bkText)
+                        }
+                        .listRowInsets(.init())
+                        .listRowSeparator(.hidden)
+                        .padding(.horizontal, 30)
+                    }
+                }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
         }
         .toolbar(.hidden, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
@@ -40,20 +49,32 @@ public struct SearchView: View {
         HStack(spacing: 0) {
             Button {
                 navigationRouter.pop()
-            } label : {
-                Image("back_search")
+            } label: {
+                Image("back_search", label: Text("뒤로가기"))
             }
-            
+
             SearchBar(text: $viewModel.searchText,
-                      shouldBecomeFirstResponder: $viewModel.shouldBecomeFirstResponder)
+                      shouldBecomeFirstResponder: $viewModel.shouldBecomeFirstResponder) {
+                setSearchResultWithContext()
+            }
+            .accessibilityFocused($isSearchBarFocused)
             
             Button {
-                
-            } label : {
-                Image("close_search")
+                viewModel.send(action: .clearSearchText)
+            } label: {
+                Image("close_search",label: Text("검색 취소"))
             }
         }
         .padding(.horizontal, 20)
+    }
+    
+    func setSearchResultWithContext() {
+        let result = SearchResult(context: objectContext)
+        result.id = UUID().uuidString
+        result.name = viewModel.searchText
+        result.date = Date()
+        
+        try? objectContext.save()
     }
 }
 

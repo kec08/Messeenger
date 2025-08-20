@@ -12,7 +12,7 @@ struct ChatListView: View {
     @StateObject var viewModel: ChatListViewModel
     
     var body: some View {
-        NavigationStack(path: $navigationRouter.desctinations) {
+        NavigationStack(path: $navigationRouter.destinations) {
             ScrollView {
                 NavigationLink(value: NavigationDestination.search(userId: viewModel.userId)) {
                     SearchButton()

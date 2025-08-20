@@ -1,0 +1,26 @@
+//
+//  SearchDataController.swift
+//  LMessenger
+//
+//  Created by 김은찬 on 8/20/25.
+//
+
+import Foundation
+import CoreData
+
+protocol DataControllable {
+    var persistantContainer: NSPersistentContainer { get set }
+}
+
+class SearchDataController: ObservableObject {
+    
+    var persistantContainer = NSPersistentContainer(name: "Search")
+    
+    init() {
+        persistantContainer.loadPersistentStores { description, error in
+            if let error {
+                print("Core data failed: ", error.localizedDescription)
+            }
+        }
+    }
+}

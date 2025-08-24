@@ -23,6 +23,8 @@ struct HomeView: View {
                         OtherProfileView(viewModel: .init(container: container, userId: userId)) { otherUserInfo in
                             viewModel.send(action: .goToChat(otherUserInfo))
                         }
+                    case .setting:
+                        SettingView(viewModel: .init())
                     }
                 }
                 .navigationDestination(for: NavigationDestination.self) {

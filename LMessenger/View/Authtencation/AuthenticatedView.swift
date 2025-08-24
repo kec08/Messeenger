@@ -10,6 +10,7 @@ struct AuthenticatedView: View {
     @StateObject var authViewModel: AuthenticatedViewModel
     @StateObject var navigationRouter: NavigationRouter
     @StateObject var searchDataController: SearchDataController
+    @StateObject var appearanceController: AppearanceController
     
     var body: some View {
         VStack {
@@ -22,6 +23,7 @@ struct AuthenticatedView: View {
                     .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
                     .environmentObject(authViewModel)
                     .environmentObject(navigationRouter)
+                    .environmentObject(appearanceController)
                     .onAppear {
                         authViewModel.send(action: .requestPushNotification)
                     }
@@ -30,6 +32,7 @@ struct AuthenticatedView: View {
         .onAppear {
             authViewModel.send(action: .checkAutthenticationState)
         }
+        .preferredColorScheme(appearanceController.appearance.colorScheme)
     }
 }
 
@@ -38,7 +41,8 @@ struct AuthenticatedView_Previews: PreviewProvider {
         AuthenticatedView(
             authViewModel: AuthenticatedViewModel(container: DIContainer(service: StubService())),
             navigationRouter: NavigationRouter(),
-            searchDataController: SearchDataController()
+            searchDataController: .init(),
+            appearanceController: .init(0)
         )
     }
 }

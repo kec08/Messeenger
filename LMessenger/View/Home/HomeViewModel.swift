@@ -14,6 +14,7 @@ class HmoeViewModel: ObservableObject {
         case load
         case requestContacts
         case presentMyProfileView
+//        case presentView(HomeModalDestination)
         case presnOtherProfileView(String)
         case goToChat(User)
     }

@@ -76,6 +76,9 @@
 		BCA071CE2E4CE6560089A2F5 /* ChatImageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA071CD2E4CE6440089A2F5 /* ChatImageItemView.swift */; };
 		BCBE85AB2E540990008CFC35 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE85AA2E54097F008CFC35 /* SearchViewModel.swift */; };
 		BCBE85AD2E5469D7008CFC35 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBE85AC2E5469C9008CFC35 /* SearchBar.swift */; };
+		BCD78E6A2E5B5B52004EA26D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD78E662E5B5B52004EA26D /* SettingView.swift */; };
+		BCD78E6B2E5B5B52004EA26D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD78E672E5B5B52004EA26D /* SettingViewModel.swift */; };
+		BCD78E6C2E5B5B52004EA26D /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD78E682E5B5B52004EA26D /* SettingItem.swift */; };
 		BCE180982E505AF200C34A38 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BCE180972E505AF200C34A38 /* FirebaseMessaging */; };
 		BCE1809A2E505F1200C34A38 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE180992E505F1200C34A38 /* PushNotificationService.swift */; };
 		BCE1809E2E507C3600C34A38 /* PushNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1809D2E507C3600C34A38 /* PushNotificationProvider.swift */; };
@@ -170,6 +173,9 @@
 		BCBE85AA2E54097F008CFC35 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		BCBE85AC2E5469C9008CFC35 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		BCD46F272E3D043700EA85FE /* LMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessenger.entitlements; sourceTree = "<group>"; };
+		BCD78E662E5B5B52004EA26D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		BCD78E672E5B5B52004EA26D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		BCD78E682E5B5B52004EA26D /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		BCE180962E50597900C34A38 /* LMessengerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LMessengerRelease.entitlements; sourceTree = "<group>"; };
 		BCE180992E505F1200C34A38 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		BCE1809D2E507C3600C34A38 /* PushNotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationProvider.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 				BCA071262E45E6C90089A2F5 /* Chat */,
 				BCA0712B2E45E6C90089A2F5 /* Search */,
 				BC7FEC9F2E40F16100E43050 /* Profile */,
+				BCD78E692E5B5B52004EA26D /* Setting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -519,6 +526,16 @@
 				BCA071892E49CD210089A2F5 /* ChatItemView.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		BCD78E692E5B5B52004EA26D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BCD78E662E5B5B52004EA26D /* SettingView.swift */,
+				BCD78E672E5B5B52004EA26D /* SettingViewModel.swift */,
+				BCD78E682E5B5B52004EA26D /* SettingItem.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -723,6 +740,9 @@
 				BC9EF0952E43195F00725CD1 /* MyProfileMenuType.swift in Sources */,
 				BC7FECA32E40F19C00E43050 /* OtherProfileView.swift in Sources */,
 				BCA071762E48C7E10089A2F5 /* ChatListViewModel.swift in Sources */,
+				BCD78E6A2E5B5B52004EA26D /* SettingView.swift in Sources */,
+				BCD78E6B2E5B5B52004EA26D /* SettingViewModel.swift in Sources */,
+				BCD78E6C2E5B5B52004EA26D /* SettingItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

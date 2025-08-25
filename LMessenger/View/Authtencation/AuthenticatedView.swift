@@ -7,11 +7,9 @@
 import SwiftUI
 
 struct AuthenticatedView: View {
+    @EnvironmentObject var container: DIContainer
     @StateObject var authViewModel: AuthenticatedViewModel
-    @StateObject var navigationRouter: NavigationRouter
-    @StateObject var searchDataController: SearchDataController
-    @StateObject var appearanceController: AppearanceController
-    
+
     var body: some View {
         VStack {
             switch authViewModel.authenticationState {
@@ -20,10 +18,8 @@ struct AuthenticatedView: View {
                     .environmentObject(authViewModel)
             case .authenticated:
                 MainTabView()
-                    .environment(\.managedObjectContext, searchDataController.persistantContainer.viewContext)
+                    .environment(\.managedObjectContext, container.searchDataController.persistantContainer.viewContext)
                     .environmentObject(authViewModel)
-                    .environmentObject(navigationRouter)
-                    .environmentObject(appearanceController)
                     .onAppear {
                         authViewModel.send(action: .requestPushNotification)
                     }
@@ -32,18 +28,14 @@ struct AuthenticatedView: View {
         .onAppear {
             authViewModel.send(action: .checkAutthenticationState)
         }
-        .preferredColorScheme(appearanceController.appearance.colorScheme)
+        .preferredColorScheme(container.appearanceController.appearance.colorScheme)
     }
 }
 
 struct AuthenticatedView_Previews: PreviewProvider {
     static var previews: some View {
         AuthenticatedView(
-            authViewModel: AuthenticatedViewModel(container: DIContainer(service: StubService())),
-            navigationRouter: NavigationRouter(),
-            searchDataController: .init(),
-            appearanceController: .init(0)
-        )
+            authViewModel: AuthenticatedViewModel(container: DIContainer(service: StubService())))
     }
 }
 

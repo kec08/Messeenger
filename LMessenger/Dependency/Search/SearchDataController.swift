@@ -12,7 +12,7 @@ protocol DataControllable {
     var persistantContainer: NSPersistentContainer { get set }
 }
 
-class SearchDataController: ObservableObject {
+class SearchDataController: DataControllable {
     
     var persistantContainer = NSPersistentContainer(name: "Search")
     

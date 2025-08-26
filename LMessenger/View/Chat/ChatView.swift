@@ -130,7 +130,7 @@ public struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatView(viewModel: .init(container: DIContainer(service: StubService()),
+            ChatView(viewModel: .init(container: DIContainer(service: StubServices()),
                                       chatRoomId: "chatRoom1_id",
                                       myUserId: "user1_id",
                                       otherUserId: "user2_id"))

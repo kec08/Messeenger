@@ -39,7 +39,7 @@ class MyprofilleViewModel: ObservableObject {
     
     func updateUserDescription(_ description: String) async {
         do {
-            try? await container.service.userService.updateDeescription(userId: userId, description: description)
+            try? await container.service.userService.updateDescription(userId: userId, description: description)
             userInfo?.description = description
         } catch {
             print(error.localizedDescription)
@@ -52,7 +52,7 @@ class MyprofilleViewModel: ObservableObject {
         guard let pickerItem else { return }
         
         do {
-            let data = try await container.service.photoService.loadTransferable(from: pickerItem)
+            let data = try await container.service.photoPickerService.loadTransferable(from: pickerItem)
             let url = try await container.service.uploadService.uploadImage(source: .profile(userId: userId), data: data)
             try await container.service.userService.updateProfileURL(userId: userId, urlString: url.absoluteString)
             

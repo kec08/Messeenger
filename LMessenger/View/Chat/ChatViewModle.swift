@@ -100,7 +100,7 @@ class ChatViewModel: ObservableObject {
             
         case let .uploadImage(pickerItem):
             guard let pickerItem else { return }
-            container.service.photoService.loadTransferable(from: pickerItem)
+            container.service.photoPickerService.loadTransferable(from: pickerItem)
                 .flatMap { data in
                     self.container.service.uploadService.uploadImage(source: .chat(chatRoomId: self.chatRoomId), data: data)
                 }

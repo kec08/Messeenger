@@ -105,8 +105,8 @@ struct MyProfileView: View {
 }
 
 
-struct MyProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyProfileView(viewModel: .init(container: DIContainer(service: StubService()), userId: "user1–id"))
-    }
-}
+//struct MyProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyProfileView(viewModel: .init(container: DIContainer(service: StubService()), userId: "user1–id"))
+//    }
+//}

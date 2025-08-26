@@ -69,7 +69,7 @@ fileprivate struct ChatRoomCell: View {
 
 struct ChatRoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatListView(viewModel: .init(container: DIContainer(service: StubService()), userId: "user1_id"))
+        ChatListView(viewModel: .init(container: DIContainer(service: StubServices()), userId: "user1_id"))
             .environmentObject(NavigationRouter())
     }
 }

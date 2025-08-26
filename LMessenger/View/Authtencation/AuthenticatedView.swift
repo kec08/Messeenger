@@ -35,7 +35,7 @@ struct AuthenticatedView: View {
 struct AuthenticatedView_Previews: PreviewProvider {
     static var previews: some View {
         AuthenticatedView(
-            authViewModel: AuthenticatedViewModel(container: DIContainer(service: StubService())))
+            authViewModel: AuthenticatedViewModel(container: DIContainer(service: StubServices())))
     }
 }
 

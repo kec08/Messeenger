@@ -2,7 +2,6 @@
 //  UserService.swift
 //  LMessenger
 //
-//  Created by 김은찬 on 8/3/25.
 //
 
 import Foundation
@@ -13,7 +12,7 @@ protocol UserServiceType {
     func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError>
     func getUser(userId: String) -> AnyPublisher<User, ServiceError>
     func getUser(userId: String) async throws -> User
-    func updateDeescription(userId: String, description: String) async throws
+    func updateDescription(userId: String, description: String) async throws
     func updateProfileURL(userId: String, urlString: String) async throws
     func updateFCMToken(userId: String, fcmToken: String) -> AnyPublisher<Void, ServiceError>
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError>
@@ -43,12 +42,7 @@ class UserService: UserServiceType {
     
     func getUser(userId: String) -> AnyPublisher<User, ServiceError> {
         dbRepository.getUser(userId: userId)
-            .tryMap { userObject in
-                guard let userObject = userObject else {
-                    throw ServiceError.error(NSError(domain: "UserService", code: -1, userInfo: [NSLocalizedDescriptionKey: "User not found"]))
-                }
-                return userObject.toModel()
-            }
+            .map { $0.toModel() }
             .mapError { .error($0) }
             .eraseToAnyPublisher()
     }
@@ -58,11 +52,11 @@ class UserService: UserServiceType {
         return userObject.toModel()
     }
     
-    func updateDeescription(userId: String, description: String) async throws {
+    func updateDescription(userId: String, description: String) async throws {
         try await dbRepository.updateUser(userId: userId, key: "description", value: description)
     }
     
-    func updateProfileURL(userId: String, urlString: String) async throws{
+    func updateProfileURL(userId: String, urlString: String) async throws {
         try await dbRepository.updateUser(userId: userId, key: "profileURL", value: urlString)
     }
     
@@ -81,7 +75,7 @@ class UserService: UserServiceType {
             .mapError { .error($0) }
             .eraseToAnyPublisher()
     }
-
+    
     func filterUsers(with queryString: String, userId: String) -> AnyPublisher<[User], ServiceError> {
         dbRepository.filterUsers(with: queryString)
             .map { $0
@@ -111,7 +105,7 @@ class StubUserService: UserServiceType {
         return .stub1
     }
     
-    func updateDeescription(userId: String, description: String) async throws {
+    func updateDescription(userId: String, description: String) async throws {
         
     }
     
@@ -131,3 +125,5 @@ class StubUserService: UserServiceType {
         Just([.stub1, .stub2]).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
     }
 }
+
+

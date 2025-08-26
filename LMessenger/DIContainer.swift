@@ -10,13 +10,13 @@ import Foundation
 class DIContainer: ObservableObject {
     var service: ServiceType
     var searchDataController: DataControllable
-    var navigationRoutter: NavigationRoutable
-    var appearanceController: AppearanceControllerable
+    var navigationRoutter: NavigationRoutable & ObservableObjectSettable
+    var appearanceController: AppearanceControllerable & ObservableObjectSettable
     
     init(service: ServiceType,
          searchDataController: DataControllable = SearchDataController(),
-         navigationRoutter: NavigationRoutable = NavigationRouter(),
-         appearanceController: AppearanceControllerable = AppearanceController()) {
+         navigationRoutter: NavigationRoutable & ObservableObjectSettable = NavigationRouter(),
+         appearanceController: AppearanceControllerable & ObservableObjectSettable = AppearanceController()) {
         self.service = service
         self.searchDataController = searchDataController
         self.navigationRoutter = navigationRoutter
@@ -24,5 +24,11 @@ class DIContainer: ObservableObject {
         
         self.navigationRoutter.setObjectWillChange(objectWillChange)
         self.appearanceController.setObjectWillChange(objectWillChange)
+    }
+}
+
+extension DIContainer {
+    static var stub: DIContainer {
+        .init(service: StubServices())
     }
 }

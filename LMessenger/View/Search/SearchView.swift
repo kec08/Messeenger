@@ -80,6 +80,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(viewModel: .init(container: DIContainer(service: StubService()), userId: "user1_id"))
+        SearchView(viewModel: .init(container: DIContainer(service: StubServices()), userId: "user1_id"))
     }
 }

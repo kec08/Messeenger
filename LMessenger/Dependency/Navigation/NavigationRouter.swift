@@ -17,7 +17,7 @@ protocol NavigationRoutable {
     func setObjectWillChange(_ objectWillChange: ObservableObjectPublisher)
 }
 
-class NavigationRouter: NavigationRoutable, ObservableObject {
+class NavigationRouter: NavigationRoutable, ObservableObject, ObservableObjectSettable {
     
     var objectWillChange: ObservableObjectPublisher?
     
@@ -39,7 +39,4 @@ class NavigationRouter: NavigationRoutable, ObservableObject {
         destinations = []
     }
     
-    func setObjectWillChange(_ objectWillChange: ObservableObjectPublisher) {
-        self.objectWillChange = objectWillChange
-    }
 }

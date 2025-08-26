@@ -21,7 +21,7 @@ struct MainTabView: View {
                     case .home:
                         HomeView(viewModel: .init(container: container, navigationRouter: navigationRouter, userId: authViewModel.userId ?? ""))
                     case .chat:
-                        ChatListView(viewModel: .init(container: DIContainer(service: StubService()), userId: authViewModel.userId ?? ""))
+                        ChatListView(viewModel: .init(container: DIContainer(service: StubServices()), userId: authViewModel.userId ?? ""))
                     case .phone:
                         Color.blackFix
                     }
@@ -47,7 +47,7 @@ struct MainTabView_Previews: PreviewProvider {
 }
 
 struct MainTabVieww_Previews: PreviewProvider {
-    static let container = DIContainer(service: StubService())
+    static let container = DIContainer(service: StubServices())
     static let navigationRouter = NavigationRouter()
     
     static var previews: some View {

@@ -1,8 +1,10 @@
 //
-//  UserDBRepository.swift
+//  UserDBRepositoryType.swift
 //  LMessenger
 //
+//  Created by 김은찬 on 8/27/25.
 //
+
 
 import Foundation
 import Combine
@@ -133,4 +135,3 @@ class UserDBRepository: UserDBRepositoryType {
             .eraseToAnyPublisher()
     }
 }
-

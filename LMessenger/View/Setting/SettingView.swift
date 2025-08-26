@@ -9,7 +9,7 @@ import SwiftUI
 struct SettingView: View {
     @AppStorage(AppStorageType.Appearance) var appearance: Int = UserDefaults.standard.integer(forKey: AppStorageType.Appearance)
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var container : DIContainer
+    @EnvironmentObject var container: DIContainer
     @StateObject var viewModel: SettingViewModel
     
     var body: some View {

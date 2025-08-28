@@ -2,18 +2,16 @@
 //  HomeView.swift
 //  LMessenger
 //
-//  Created by 김은찬 on 8/2/25.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var container: DIContainer
-    @EnvironmentObject var navigationRouter: NavigationRouter
-    @StateObject var viewModel: HmoeViewModel
+    @StateObject var viewModel: HomeViewModel
     
     var body: some View {
-        NavigationStack(path: $navigationRouter.destinations){
+        NavigationStack(path: $container.navigationRouter.destinations) {
             contentView
                 .fullScreenCover(item: $viewModel.modalDestination) {
                     switch $0 {
@@ -46,13 +44,13 @@ struct HomeView: View {
         case .success:
             loadedView
                 .toolbar {
-                    Image("bookmark")
-                    Image("notifications")
-                    Image("person_add")
+                    Image(decorative: "bookmark")
+                    Image(decorative: "notifications")
+                    Image(decorative: "person_add")
                     Button {
-                        // TODO:
+                        viewModel.send(action: .presentView(.setting))
                     } label: {
-                        Image("settings")
+                        Image("settings", label: Text("설정"))
                     }
                 }
         case .fail:
@@ -70,38 +68,39 @@ struct HomeView: View {
             }
             .padding(.bottom, 24)
             
-            HStack{
+            HStack {
                 Text("친구")
                     .font(.system(size: 14))
                     .foregroundColor(.bkText)
+                    .accessibilityAddTraits(.isHeader)
                 Spacer()
-                
             }
             .padding(.horizontal, 30)
             
-            // TODO: 친구 목록
             if viewModel.users.isEmpty {
                 Spacer(minLength: 89)
                 emptyView
             } else {
                 LazyVStack {
-                    ForEach(viewModel.users, id: \.id) { user in
-                        Button{
-                            viewModel.send(action: .presnOtherProfileView(user.id))
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image("person")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                                Text(user.name)
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.bkText)
-                                Spacer()
-                            }
+                    ForEach(viewModel.users) { user in
+                        HStack(spacing: 8) {
+                            URLImageView(urlString: user.profileURL)
+                                .frame(width: 40, height: 40)
+                                .clipShape(Circle())
+                            Text(user.name)
+                                .font(.system(size: 12))
+                                .foregroundColor(.bkText)
+                            Spacer()
                         }
-                        .padding(.horizontal, 30)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewModel.send(action: .presentView(.otherProfile(user.id)))
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(user.name)
+                        .accessibilityAddTraits(.isButton)
                     }
+                    .padding(.horizontal, 30)
                 }
             }
         }
@@ -120,15 +119,18 @@ struct HomeView: View {
             
             Spacer()
             
-            Image("person")
-                .resizable()
+            URLImageView(urlString: viewModel.myUser?.profileURL)
                 .frame(width: 52, height: 52)
                 .clipShape(Circle())
-            
         }
         .padding(.horizontal, 30)
         .onTapGesture {
-            viewModel.send(action: .presentMyProfileView)
+            viewModel.send(action: .presentView(.myProfile))
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityHint(Text("내 프로필을 보려면 이중탭하십시오."))
+        .accessibilityAction {
+            viewModel.send(action: .presentView(.myProfile))
         }
     }
     
@@ -137,7 +139,7 @@ struct HomeView: View {
             VStack(spacing: 3) {
                 Text("친구를 추가해보세요.")
                     .foregroundColor(.bkText)
-                Text("QR코드나 검색을 이용해서 친구를 추가해보세요.")
+                Text("큐알코드나 검색을 이용해서 친구를 추가해보세요.")
                     .foregroundColor(.greyDeep)
             }
             .font(.system(size: 14))
@@ -160,13 +162,12 @@ struct HomeView: View {
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var container: DIContainer = .init(service: .StubService())
-//    static var navigationRouter: NavigationRouter = .init()
-//    
-//    static var previews: some View {
-//        HomeView(viewModel: .init(container: Self.container, navigationRouter: Self.navigationRouter, userId: "user1_id"))
-//            .environmentObject(Self.navigationRouter)
-//            .environmentObject(Self.container)
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static let container: DIContainer = .stub
+    
+    static var previews: some View {
+        HomeView(viewModel: .init(container: Self.container, userId: "user1_id"))
+            .environmentObject(Self.container)
+    }
+}
+

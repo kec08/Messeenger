@@ -44,24 +44,24 @@ public struct ChatView: View {
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Image("search_caht")
-                Image("bookmark")
-                Image("settings")
+                Image(decorative: "search_caht")
+                Image(decorative: "bookmark")
+                Image(decorative: "settings")
             }
         }
         .keyboardToobar(height: 50) {
             HStack(spacing: 13) {
                 Button {
                 } label: {
-                    Image("other_add")
+                    Image("other_add", label: Text("더보기"))
                 }
                 PhotosPicker(selection: $viewModel.imageSelection,
                              matching: .images) {
-                    Image("image_add")
+                    Image("image_add", label: Text("사진첨부"))
                 }
                 Button {
                 } label: {
-                    Image("photo_camera")
+                    Image("photo_camera", label: Text("카메라"))
                 }
                 
                 TextField("", text: $viewModel.message)
@@ -77,7 +77,7 @@ public struct ChatView: View {
                     viewModel.send(action: .addChat(viewModel.message))
                     isFocused = false
                 } label: {
-                    Image("send")
+                    Image("send", label: Text("잔성"))
                 }
                 .disabled(viewModel.message.isEmpty)
             }
@@ -98,12 +98,14 @@ public struct ChatView: View {
                                           direction: viewModel.getDirection(id: chat.userId),
                                           date: chat.date)
                         .id(chat.chatId)
+                        .accessibilityElement(children: .combine)
                     } else if let message = chat.message, !message.isEmpty {
                         ChatItemView(message: message,
                                      direction: viewModel.getDirection(id: chat.userId),
                                      date: chat.date)
                         .id(chat.chatId)
                         .accessibilityElement(children: .combine)
+                        .accessibility(addTraits: .isImage)
                     }
                 }
             } header: {
@@ -124,6 +126,7 @@ public struct ChatView: View {
                 .foregroundColor(.bgWh)
         }
         .padding(.top)
+        .accessibilityLabel(Text(dateStr.toChatDate?.toChatTimeAccessibility ?? ""))
     }
 }
 

@@ -19,7 +19,7 @@ struct MainTabView: View {
                 Group {
                     switch tab  {
                     case .home:
-                        HomeView(viewModel: .init(container: container, navigationRouter: navigationRouter, userId: authViewModel.userId ?? ""))
+                        HomeView(viewModel: .init(container: container, userId: authViewModel.userId ?? ""))
                     case .chat:
                         ChatListView(viewModel: .init(container: DIContainer(service: StubServices()), userId: authViewModel.userId ?? ""))
                     case .phone:
